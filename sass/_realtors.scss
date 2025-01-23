@@ -2,4 +2,9 @@
 
 .realtors {
   background-color: base.$color-secondary; // Correctly reference the variable
+  // Realtors section width is shared with the header section.
+  // Start - Realtors section takes the last 2 of the 8 columns
+  // End - Realtors section is a full-bleed section
+  // Columns - Place the realtor section from the start of column 7 to full-end
+  grid-column: col-start 7 / full-end;
 }

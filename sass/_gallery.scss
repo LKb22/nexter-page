@@ -2,4 +2,7 @@
 
 .gallary {
   background-color: base.$color-grey-dark-1; // Correctly reference the variable}
+  // Gallery section width is a full-bleed section, from full-start to full-end
+  // Columns - Place the gallery from full-start to full-end
+  grid-column: full-start / full-end;
 }

@@ -14,6 +14,7 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
+// Reset CSS
 *,
 *::before,
 *::after {
@@ -27,9 +28,30 @@ html {
   font-size: 62.5%; // 1rem = 10px
 }
 
+// Set stying for the body
 body {
   font-family: $font-primary;
   color: $color-primary;
   font-weight: 300;
   line-height: 1.6;
+}
+
+// Make the container a grid
+.container {
+  display: grid;
+  // Each row is essentially a section of our page, scrolling vertically. Go through each row and set to be responsive based on content and layout of desired design of each section
+  // Row 1: viewport height, 2: min-content to adapt to content, 3: viewport width, 4,5,6: min-content
+  grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
+  // 8 columns, each with a width between a min of their min-content and a max of 140px
+  // Plus the sidebar, added first to be on the left, with a width of 8rem
+  // Plus 1fr columns on each side of the 8 content columns to center them and fill the space, as well as to create space for the content in some rows to 'bleed out' of this main 8 column content area ('full-bleed sections'). Add a min of 6rem to these columns to prevent them from shrinking too much.
+  // Now, name the column tracks to make it easier to reference them in the grid-template-areas
+  // We have a sidebar-start and sidebar-end, a full-start and full-end (for the bleeding sections), a center-start and center-end (for the main content of the 8 columns), and a col-start and col-end (for each one of the 8 columns themselves)
+  grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem, 1fr) [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end]; // 14rem = 140px
+
+  // For dev purposes, increase the sizing using the select all direct children selector to select all the sections
+  & > * {
+    padding: 40px;
+    font-size: 3rem;
+  }
 }

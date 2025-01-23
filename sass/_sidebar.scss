@@ -2,4 +2,11 @@
 
 .sidebar {
   background-color: base.$color-primary; // Correctly reference the variable
+  // Sidebar section width goes from the sidebar-start to the sidebar-end
+  // Columns - Place the sidebar from sidebar-start to sidebar-end
+  grid-column: sidebar-start / sidebar-end;
+  // Sidebar section height goes down the full height of the page
+  // Rows - Place the sidebar from the first row to the last row
+  grid-row: 1 / -1;
+  // grid-area: sidebar-start / 1 / sidebar-end / -1; // Alternative way to write the above two lines
 }

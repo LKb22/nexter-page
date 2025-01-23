@@ -2,4 +2,7 @@
 
 .footer {
   background-color: base.$color-secondary; // Correctly reference the variable}
+  // Footer section width is a full-bleed section, from full-start to full-end
+  // Columns - Place the footer from full-start to full-end
+  grid-column: full-start / full-end;
 }

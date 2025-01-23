@@ -2,4 +2,7 @@
 
 .homes {
   background-color: base.$color-secondary; // Correctly reference the variable}
+  // Homes section width is contained in the main content area (8 columns)
+  // Columns - Place the features from center-start to center-end
+  grid-column: center-start / center-end;
 }

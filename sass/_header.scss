@@ -1,5 +1,10 @@
 @use "base"; // Import base with the namespace
 
 .header {
-  background-color: base.$color-grey-dark-1 // Correctly reference the variable
+  background-color: base.$color-grey-dark-1; // Correctly reference the variable
+  // Header section width is shared with the realtors section.
+  // Start - Header section is a full-bleed section
+  // End - Header section takes 6 of the first 8 columns
+  // Columns - Place the header section from full-start to end of column 6
+  grid-column: full-start / col-end 6;
 }
