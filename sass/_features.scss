@@ -1,0 +1,5 @@
+@use "base"; // Import base with the namespace
+
+.features {
+  background-color: base.$color-grey-light-2; // Correctly reference the variable
+}

@@ -1,0 +1,5 @@
+@use "base"; // Import base with the namespace
+
+.sidebar {
+  background-color: base.$color-primary; // Correctly reference the variable
+}

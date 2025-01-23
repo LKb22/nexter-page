@@ -1,0 +1,5 @@
+@use "base"; // Import base with the namespace
+
+.gallary {
+  background-color: base.$color-grey-dark-1; // Correctly reference the variable}
+}

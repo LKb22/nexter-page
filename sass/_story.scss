@@ -1,0 +1,12 @@
+@use "base"; // Import base with the namespace
+
+.story {
+
+  &__pictures {
+    background-color: base.$color-primary; // Correctly reference the variable}
+  }
+
+  &__content {
+    background-color: base.$color-grey-light-1; // Correctly reference the variable}
+  }
+}
