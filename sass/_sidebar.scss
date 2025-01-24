@@ -9,4 +9,33 @@
   // Rows - Place the sidebar from the first row to the last row
   grid-row: 1 / -1;
   // grid-area: sidebar-start / 1 / sidebar-end / -1; // Alternative way to write the above two lines
+
+  // Use flexbox to center the content
+  display: flex;
+  justify-content: center; // Center the content along the main axis (horizontally)
+}
+
+// Make a hamburger button. The button is the middle line and the pseudo-elements are the top and bottom lines
+// Use extend to create a placeholder called nav-button
+%nav-button {
+  background-color: base.$color-white;
+  height: 2px;
+  width: 4.5rem;
+}
+
+.nav-btn {
+  border: none;
+  border-radius: 0;
+  margin-top: 4rem;
+  @extend %nav-button;
+
+  &::before,
+  &::after {
+    @extend %nav-button;
+    content: ""; // Required for pseudo-elements
+    display: block; // Required for pseudo-elements
+  }
+
+  &::before { transform: translateY(-1.5rem); } // Move the before pseudo-element up
+  &::after { transform: translateY(1.3rem); } // Move the after pseudo-element down
 }
