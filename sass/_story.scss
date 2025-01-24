@@ -5,14 +5,65 @@
   // Both are bleeding sections and take 4 of the 8 columns
 
   &__pictures {
-    background-color: base.$color-primary; // Correctly reference the variable}
+    // Use the linear gradient to create a gradient background to better fit the color scheme. Go from 50% opacity to 50% opacity of the primary color to keep it even in this case
+    background-image: linear-gradient(rgba(base.$color-primary, .5), rgba(base.$color-primary, .5)), url(/img/back.jpg);
     // Columns - Place the pictures section from full-start to the end of column 4
     grid-column: full-start / col-end 4;
+
+    // Use grid to style the pictures
+    display: grid;
+    // Can use a 6 x 6 grid to achieve the desired styling
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center; // Center the images vertically in its grid area
+  }
+
+  &__img--1 {
+    width: 100%;
+
+    // img--1 should be centered in the middle 4 grid cells with a border of 1 cell all around
+    grid-row: 2 / span 4; // or grid-row: 2 / 6;
+    grid-column: 2 / span 4;  // or grid-column: 2 / 6;
+    // Images do not fill the entire grid area by default, given they have an aspect ratio. Use align items on parent div to center the images vertically
+
+    box-shadow: base.$box-shadow;
+  }
+
+  &__img--2 {
+    width: 115%; // Increase the width to 115% to make it overflow the grid area on the right side
+    z-index: 20; // Increase the z-index to make the overflow visible
+
+    // Img 2 should be placed in the last 3 columns and the last 2 rows to achieve the desired layout
+    grid-row: 4 / 6;
+    grid-column: 4 / 7;
+
+    box-shadow: base.$box-shadow;
   }
 
   &__content {
     background-color: base.$color-grey-light-1; // Correctly reference the variable}
     // Columns - Place the content section from the start of column 5 to full-end
     grid-column: col-start 5 / full-end;
+
+    padding: 6rem 8vw; // Use vw units to make the padding more responsive
+
+    // Use flexbox to style the content
+    display: flex;
+    flex-direction: column; // Main axis is now vertical
+    justify-content: center; // Justify content to center the content along the main axis
+    align-items: flex-start; // Align items to remove the default stretch value, which was stretching the button to the full width of the container in this case
+
+    /*
+    Using grid
+    display: grid;
+    align-content: center;
+    justify-items: start; // Same as align-items in flexbox to fix the button width
+    */
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-bottom: 4rem; // Okay here because this text is not a reusable element
   }
 }
