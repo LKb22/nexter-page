@@ -49,6 +49,7 @@
 
   &:hover {
     background-color: base.$color-primary-dark;
+    transform: translateY(-3px); // Move the link up slightly on hover
   }
 }
 

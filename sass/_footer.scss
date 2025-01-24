@@ -1,8 +1,48 @@
 @use "base"; // Import base with the namespace
 
 .footer {
-  background-color: base.$color-secondary; // Correctly reference the variable}
+  background-color: base.$color-secondary;
   // Footer section width is a full-bleed section, from full-start to full-end
   // Columns - Place the footer from full-start to full-end
   grid-column: full-start / full-end;
+  padding: 8rem;
+}
+
+.nav {
+  list-style: none;
+
+  // Use grid and columns with auto-fit and minmax to create a responsive layout for the footer
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 2rem;
+  align-items: center; // Align along the cross axis (vertically)
+
+  // Select the link and visited link for the footer
+  &__link:link,
+  &__link:visited {
+    font-size: 1.4rem;
+    color: base.$color-white;
+    text-decoration: none;
+    font-family: base.$font-display;
+    text-transform: uppercase;
+    text-align: center;
+    display: block; // For padding and margin to work
+    padding: 1.5rem;
+    transition: all .2s;
+  }
+
+  // Hover and active states for the footer links
+  &__link:hover,
+  &__link:active {
+    background-color: rgba(base.$color-white, .05); // Give a lighter background color behind the links on hover
+    transform: translateY(-3px); // Move the link up slightly on hover
+  }
+}
+
+.copyright {
+  font-size: 1.4rem;
+  color: base.$color-grey-light-2;
+  margin: 6rem auto 0 auto; // Top margin of 6rem, bottom margin of 0, and center horizontally
+  text-align: center;
+  width: 70%;
 }
