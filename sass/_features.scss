@@ -5,13 +5,13 @@
   // Columns - Place the features from center-start to center-end
   grid-column: center-start / center-end;
 
-  margin: 15rem 0; // Top and bottom margin
+  margin: base.$center-content-margins;
 
   // The features divs are displayed in a grid of their own
   // This grid can have 3 columns for the desired layout
   display: grid;
   // grid-template-columns: repeat(3, 1fr); // 3 columns with equal width
-  // Make the columns responsive using repeat(auto fit and minmax), which will create as many tracks as possible based on the defined min and max width
+  // Make the columns responsive using repeat(auto fit and minmax), which will create as many tracks as possible within the grid container, with each track having a minimum width of 25rem and a maximum width of 1fr
   grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // Minimum width of 25rem and maximum width of 1fr
   // We don't need to define the rows, as they will be created automatically as an implicit grid
   grid-gap: 6rem; // Gap between the columns and rows / each feature
@@ -24,13 +24,13 @@
   display: grid;
   grid-template-columns: min-content 1fr; // min-content for Icon (4.5rem x 4.5rem) and the text takes the remaining space
   // Again, don't need to definet he rows
-  grid-row-gap: 1.5rem; // Gap between the rows
-  grid-column-gap: 2.5rem; // Gap between the columns
+  row-gap: 1.5rem; // Gap between the rows
+  column-gap: 2.5rem; // Gap between the columns
 
   &__icon {
     fill: base.$color-primary; // Change color of SVG icon using fill
     width: 4.5rem;
-    height: 4.5rem;
+    aspect-ratio: 1; // Keep the aspect ratio of the icon
 
     // Span the icon to the entire height of the grid to push the text right into the next column
     grid-row: 1 / span 2; // Cannot use -1 here because this only refers to the last row of the explicit grid, and we didn't define any rows, meaning its an implicit grid

@@ -1,8 +1,92 @@
 @use "base"; // Import base with the namespace
 
 .homes {
-  background-color: base.$color-secondary; // Correctly reference the variable}
   // Homes section width is contained in the main content area (8 columns)
   // Columns - Place the features from center-start to center-end
   grid-column: center-start / center-end;
+
+  margin: base.$center-content-margins;
+
+  // Grid layout
+  display: grid;
+  // Adding as many columns as possible within the grid container (auto-fit), with each column having a minimum width of 25rem and a maximum width of 1fr (minmax). 1fr is an equal fraction of the available space.
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 7rem;
+
+  .home {
+    background-color: base.$color-grey-light-1; // Correctly reference the variable
+    // Create an implicit grid with two columns for the two columns of content. The other elements (img, name, and button) will span the two columns.
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 3.5rem;
+
+    &__img {
+      width: 100%;
+      // grid-row: 1 / 2;
+      // grid-column: 1 / -1; // Span the two columns
+      grid-area: 1 / 1 / 2 / -1; // Row start / column start / row end / column end
+      z-index: 1;
+    }
+
+    &__like { // Icon
+      // Move the icon into the top right grid cell
+      // Items in the same cell are not automatically placed on top of each other, but one after the other. To stack them, we need to specify the grid area for each item (img, in this case).
+      // grid-row: 1 / 2;
+      // grid-column: 2 / 3;
+      grid-area: 1 / 2 / 2 / 3; // Row start / column start / row end / column end
+
+      fill: base.$color-primary;
+      width: 2.5rem;
+      aspect-ratio: 1; // Keep the aspect ratio of the icon
+      z-index: 2; // Ensure it always stays on top
+      justify-self: end; // Align to the end of the grid cell. Like justify items, but with self refering only to the icon in this case instead justify-items in the parent grid refering to all items.
+      margin: 1rem;
+    }
+
+    &__name {
+      // grid-row: 1 / 2; Move the name div up into the first row with the image
+      // grid-column: 1 / -1; // Span the two columns
+      grid-area: 1 / 1 / 2 / -1; // Row start / column start / row end / column end
+      justify-self: center; // Center the div along the main axis (horizontally)
+      align-self: end; // Align the div to the end of the grid cell (bottom) along the cross axis (vertically)
+      z-index: 3; // Ensure it always stays on top of the image
+
+      width: 80%;
+      font-family: base.$font-display;
+      font-size: 1.6rem;
+      text-align: center;
+      padding: 1.25rem;
+      background-color: base.$color-secondary;
+      color: base.$color-white;
+      font-weight: 400;
+      transform: translateY(50%); // Move the div down by 50% of its own height to place it 50/50 between the two rows
+    }
+
+    &__location,
+    &__rooms {
+      margin-top: 2.5rem;
+    }
+
+    &__location,
+    &__rooms,
+    &__area,
+    &__price {
+      font-size: 1.5rem;
+      margin-left: 2rem;
+
+      display: flex; // Put the icons and text side by side
+      align-items: center; // Vertically center the items
+      gap: 1rem; // Space between the items
+
+      svg {
+        fill: base.$color-primary;
+        width: 2rem;
+        aspect-ratio: 1; // Keep the aspect ratio of the icon
+      }
+    }
+
+    &__btn {
+      grid-column: 1 / -1; // Span the two columns
+    }
+  }
 }
