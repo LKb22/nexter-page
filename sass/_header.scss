@@ -7,4 +7,61 @@
   // End - Header section takes 6 of the first 8 columns
   // Columns - Place the header section from full-start to end of column 6
   grid-column: full-start / col-end 6;
+
+  background-image: linear-gradient(rgba(base.$color-secondary, 0.93), rgba(base.$color-secondary, 0.93)), url(/img/hero.jpeg);
+  background-size: cover;
+  background-position: center;
+
+  // Use grid to achieve the desired header layout
+  display: grid;
+  // Use rows. Make the first row (nexter logo) ad the 4th row (button) take up as much height as possible using 1fr. The other rows will simply have spacing using row sizing and gap to achieve the desired layout. Using 1fr makes the layout more responsive as the extra space will grow and shrink with the viewport before other items start to be effected.
+  grid-template-rows: 1fr min-content 6rem 1fr; // Logo, heading-3, heading-1, button
+  grid-template-columns: max-content; // Width to fit the largest content, but not bigger
+  row-gap: 1.5rem;
+  justify-content: center; // Center the content horizontally
+
+  padding: 4rem 8rem 8rem 8rem; // Give the whole grid some padding, with half the padding at the top
+
+  &__logo {
+    height: 3rem;
+    justify-self: center; // Center just the logo
+  }
+
+  // Button's grid cell is 1fr, so we can use justify-self and align-self to re-size and position the button
+  &__btn {
+    align-self: start;
+    justify-self: start;
+  }
+
+  &__seenon-text {
+    font-size: 1.6rem;
+    color: base.$color-grey-light-2;
+    // Text, as well as pseudo-elements, can also be grid items. We can use a before and an after pseudo-element to create the two lines on the left and right of the text as their own grid items respectively, resulting in three grid items in total.
+    display: grid;
+    grid-template-columns: 1fr max-content 1fr; // Left line, text, right line . lines take remaining space equally on both sides of the text
+    column-gap: 1.5rem; // Space between the lines and the text
+    align-items: center; // Align the lines and text vertically along the cross axis
+
+    &::before,
+    &::after {
+      content: "";
+      height: 1px;
+      background-color: currentColor; // Use the current color of the text
+    }
+
+  }
+
+  &__seenon-logos {
+    // Logos are also a grid
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 4 columns for four logos of equal width
+    column-gap: 3rem; // With space between logos
+    justify-items: center; // Center the logos horizontally within their grid cells
+
+    img {
+      height: 25px;
+      // Use a filter to make the logos a bit darker
+      filter: brightness(70%); // 70% of the original brightness of 100%
+    }
+  }
 }
