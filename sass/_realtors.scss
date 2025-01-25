@@ -7,4 +7,33 @@
   // End - Realtors section is a full-bleed section
   // Columns - Place the realtor section from the start of column 7 to full-end
   grid-column: col-start 7 / full-end;
+
+  // Add padding and use grid to center the content
+  padding: 3rem;
+  display: grid;
+  align-content: center; // Vertically center the grid
+  justify-content: center; // Horizontally center the grid
+  justify-items: center; // Horizontally center the items in the grid
+  row-gap: 2rem; // Gap between the heading and the realtors grid
+
+  // The three realtors will be displayed in a 2 X 3 grid layout, with the images in the left column and the details in the right column
+  &__list {
+    display: grid;
+    grid-template-columns: min-content max-content; // min-content for the image and max-content for the details
+    column-gap: 2rem;
+    row-gap: 5vh; // Use vh to make it more responsive to the viewport height
+    align-items: center; // Vertically center the items in each cell
+  }
+
+  &__img {
+    width: 7rem;
+    border-radius: 50%;
+    display: block; // Always best to set display block for images
+  }
+
+  &__sold {
+    text-transform: uppercase;
+    color: base.$color-grey-light-2;
+    margin-top: -3px; // Move the text up closer to the realtor's name
+  }
 }
