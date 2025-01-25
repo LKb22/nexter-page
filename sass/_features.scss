@@ -7,25 +7,35 @@
 
   margin: base.$center-content-margins;
 
-  // The features divs are displayed in a grid of their own
-  // This grid can have 3 columns for the desired layout
-  display: grid;
-  // grid-template-columns: repeat(3, 1fr); // 3 columns with equal width
-  // Make the columns responsive using repeat(auto fit and minmax), which will create as many tracks as possible within the grid container, with each track having a minimum width of 25rem and a maximum width of 1fr
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // Minimum width of 25rem and maximum width of 1fr
-  // We don't need to define the rows, as they will be created automatically as an implicit grid
-  grid-gap: 6rem; // Gap between the columns and rows / each feature
-  align-items: start; // Align the features to the top of the grid (default is stretch) here in the parent div (to align the start of the texts in this case)
+  @supports (display: grid) {
+    // The features divs are displayed in a grid of their own
+    // This grid can have 3 columns for the desired layout
+    display: grid;
+    // grid-template-columns: repeat(3, 1fr); // 3 columns with equal width
+    // Make the columns responsive using repeat(auto fit and minmax), which will create as many tracks as possible within the grid container, with each track having a minimum width of 25rem and a maximum width of 1fr
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); // Minimum width of 25rem and maximum width of 1fr
+    // We don't need to define the rows, as they will be created automatically as an implicit grid
+    grid-gap: 6rem; // Gap between the columns and rows / each feature
+    align-items: start; // Align the features to the top of the grid (default is stretch) here in the parent div (to align the start of the texts in this case)
+  }
 }
 
 .feature {
+  float: left;
+  width: 33.3333%;
+  margin-botton: 6rem;
 
-  // The content is also displayed in a grid
-  display: grid;
-  grid-template-columns: min-content 1fr; // min-content for Icon (4.5rem x 4.5rem) and the text takes the remaining space
-  // Again, don't need to definet he rows
-  row-gap: 1.5rem; // Gap between the rows
-  column-gap: 2.5rem; // Gap between the columns
+  @supports (display: grid) {
+    width: auto;
+    margin-bottom: 0;
+    
+    // The content is also displayed in a grid
+    display: grid;
+    grid-template-columns: min-content 1fr; // min-content for Icon (4.5rem x 4.5rem) and the text takes the remaining space
+    // Again, don't need to definet he rows
+    row-gap: 1.5rem; // Gap between the rows
+    column-gap: 2.5rem; // Gap between the columns
+  }
 
   &__icon {
     fill: base.$color-primary; // Change color of SVG icon using fill
