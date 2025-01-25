@@ -14,9 +14,9 @@
 
   // Use grid to achieve the desired header layout
   display: grid;
-  // Use rows. Make the first row (nexter logo) ad the 4th row (button) take up as much height as possible using 1fr. The other rows will simply have spacing using row sizing and gap to achieve the desired layout. Using 1fr makes the layout more responsive as the extra space will grow and shrink with the viewport before other items start to be effected.
-  grid-template-rows: 1fr min-content 6rem 1fr; // Logo, heading-3, heading-1, button
-  grid-template-columns: max-content; // Width to fit the largest content, but not bigger
+  // Use rows. Make the first row (nexter logo) ad the 4th row (button) take up as much height as possible using 1fr. The other rows will simply have spacing using row sizing and gap to achieve the desired layout. Using 1fr makes the layout more responsive as the extra space will grow and shrink with the viewport before other items start to be effected. Use minmax for heading to set a minimum height but also a max of min-content to allow the height to grow to always fit the content as the width decreases.
+  grid-template-rows: 1fr min-content minmax(6rem, min-content) 1fr; // Logo, heading-3, heading-1, button
+  grid-template-columns: minmax(min-content, max-content); // Column should never be narrower than the content, but can grow to take up the remaining space
   row-gap: 1.5rem;
   justify-content: center; // Center the content horizontally
 
@@ -57,9 +57,11 @@
     grid-template-columns: repeat(4, 1fr); // 4 columns for four logos of equal width
     column-gap: 3rem; // With space between logos
     justify-items: center; // Center the logos horizontally within their grid cells
+    align-items: center; // Center the logos (item in each cell) vertically within their grid cells
 
     img {
-      height: 25px;
+      max-height: 2.5rem; // Make sure the logos don't get too big
+      max-width: 100%; // Make sure the logos don't overflow their grid cells
       // Use a filter to make the logos a bit darker
       filter: brightness(70%); // 70% of the original brightness of 100%
     }
