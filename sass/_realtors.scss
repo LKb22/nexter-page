@@ -16,13 +16,28 @@
   justify-items: center; // Horizontally center the items in the grid
   row-gap: 2rem; // Gap between the heading and the realtors grid
 
-  // The three realtors will be displayed in a 2 X 3 grid layout, with the images in the left column and the details in the right column
+    // Media query for medium screens to move the realtors section below the header section. Make the realtors section the full viewport / grid width.
+    @media only screen and (max-width: base.$bp-medium) {
+      grid-column: 1 / -1; // Take up the full width of the grid
+    }
+
+  // The three realtors will be displayed in a 3 X 2 grid layout, with the images in the left column and the details in the right column
   &__list {
     display: grid;
     grid-template-columns: min-content max-content; // min-content for the image and max-content for the details
     column-gap: 2rem;
     row-gap: 5vh; // Use vh to make it more responsive to the viewport height
     align-items: center; // Vertically center the items in each cell
+
+    // Media query for medium screens to move the realtors section below the header section. Change the grid to 1 X 6 layout so that the three realtors pictures and details are displayed in a single row
+    @media only screen and (max-width: base.$bp-medium) {
+      grid-template-columns: repeat(3, min-content max-content);
+    }
+
+    // Media query for small screens. Change the grid back to a 3 X 2 layout
+    @media only screen and (max-width: base.$bp-small) {
+      grid-template-columns: min-content max-content;
+    }
   }
 
   &__img {

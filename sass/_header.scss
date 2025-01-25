@@ -22,6 +22,16 @@
 
   padding: 4rem 8rem 8rem 8rem; // Give the whole grid some padding, with half the padding at the top
 
+  // Media query for medium screens to move the realtors section below the header section. Make the header the full viewport / grid width.
+  @media only screen and (max-width: base.$bp-medium) {
+    grid-column: 1 / -1; // Take up the full width of the grid
+  }
+
+  // Media query for small screens
+  @media only screen and (max-width: base.$bp-small) {
+    padding: 5rem; // Decrease the padding to 5rem
+  }
+
   &__logo {
     height: 3rem;
     justify-self: center; // Center just the logo
