@@ -8,8 +8,10 @@
 
   // Gallery will be an 8 x 7 grid to achieve the desired layout, where the smallest image is 1 x 1 grid cell and the other images are any number of additional cells using span
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  grid-template-rows: repeat(7, 5vw); // 5% of the viewport width to maintain aspect ratio and responsiveness (in this case)
+  // grid-template-columns: repeat(8, 1fr);
+  // grid-template-rows: repeat(7, 5vw); // 5% of the viewport width to maintain aspect ratio and responsiveness (in this case)
+  // Can also use one line grid-template: rows / columns;
+  grid-template: repeat(7, 5vw) / repeat(8, 1fr);
   grid-gap: 1.5rem; // Gap between the images
   padding: 1.5rem; // Equal padding around the gallery
 
