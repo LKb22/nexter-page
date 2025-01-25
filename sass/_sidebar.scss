@@ -13,6 +13,14 @@
   // Use flexbox to center the content
   display: flex;
   justify-content: center; // Center the content along the main axis (horizontally)
+
+  // Media query for large screens to move the sidebar to the top of the grid
+  @media only screen and (max-width: base.$bp-large) {
+    grid-area: 1 / full-start / span 1 / full-end;
+
+    justify-content: flex-end;
+    align-items: center;
+  }
 }
 
 // Make a hamburger button. The button is the middle line and the pseudo-elements are the top and bottom lines
@@ -38,4 +46,12 @@
 
   &::before { transform: translateY(-1.5rem); } // Move the before pseudo-element up
   &::after { transform: translateY(1.3rem); } // Move the after pseudo-element down
+
+  // Media query for large screens to move the sidebar to the top of the grid
+  @media only screen and (max-width: base.$bp-large) {
+    margin: 0 3rem 0 0; // Move the margin from the top to the right
+
+    &::before { transform: translateY(-1.2rem); } // Move the before pseudo-element up
+    &::after { transform: translateY(1rem); } // Move the after pseudo-element down
+  }
 }
